@@ -1,0 +1,124 @@
+{
+ "spans": [
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-15",
+   "text": "Автомобильный бизнес"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-50",
+   "text": "Гостиницы, рестораны, общепит, кейтеринг"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-36",
+   "text": "Государственные организации"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-45",
+   "text": "Добывающая отрасль"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-51",
+   "text": "ЖКХ"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-7",
+   "text": "Информационные технологии, системная интеграция, интернет"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-52",
+   "text": "Искусство, культура"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-19",
+   "text": "Лесная промышленность, деревообработка"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-48",
+   "text": "Медицина, фармацевтика, аптеки"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-24",
+   "text": "Металлургия, металлообработка"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-47",
+   "text": "Нефть и газ"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-39",
+   "text": "Образовательные учреждения"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-37",
+   "text": "Общественная деятельность, партии, благотворительность, НКО"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-5",
+   "text": "Перевозки, логистика, склад, ВЭД"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-27",
+   "text": "Продукты питания"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-388",
+   "text": "Промышленное оборудование, техника, станки и комплектующие"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-41",
+   "text": "Розничная торговля"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-11",
+   "text": "СМИ, маркетинг, реклама, BTL, PR, дизайн, продюсирование"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-29",
+   "text": "Сельское хозяйство"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-13",
+   "text": "Строительство, недвижимость, эксплуатация, проектирование"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-9",
+   "text": "Телекоммуникации, связь"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-42",
+   "text": "Товары народного потребления (непищевые)"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-33",
+   "text": "Тяжелое машиностроение"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-389",
+   "text": "Управление многопрофильными активами"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-44",
+   "text": "Услуги для бизнеса"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-49",
+   "text": "Услуги для населения"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-43",
+   "text": "Финансовый сектор"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-34",
+   "text": "Химическое производство, удобрения"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-8",
+   "text": "Электроника, приборостроение, бытовая техника, компьютеры и оргтехника"
+  },
+  {
+   "data-qa": "bloko-tree-selector-item-text bloko-tree-selector-item-text-46",
+   "text": "Энергетика"
+  }
+ ]
+}
