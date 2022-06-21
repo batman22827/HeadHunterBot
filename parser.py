@@ -11,7 +11,7 @@ from castomPrint import customPrint
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support import expected_conditions as EC
-from config import get_text_vacancy,write_data_qa_industry
+from config import get_text_vacancy
 
 
 
@@ -20,6 +20,7 @@ from config import get_text_vacancy,write_data_qa_industry
 
 class Parser(object):
     def __init__(self) -> None:
+        self.industry = database.get_config('industry')
         self.vacancy = database.get_config('vacancy')
         self.text_vacancy = get_text_vacancy('бариста')
         self.specialization = database.get_config('specialization')
@@ -33,14 +34,14 @@ class Parser(object):
         self.options.add_argument('--no-sandbox')
         self.options.add_argument("--disable-notifications")
         self.options.add_argument('--disable-dev-shm-usage')
-        self.options.add_argument("user-data-dir=C:\\Users\\Ilya\\AppData\\Local\\Google\\Chrome\\User Data")
+        self.options.add_argument("user-data-dir=C:\\Users\\codeframer\\AppData\\Local\\Google\\Chrome\\User Data")
         self.options.add_argument("--log-level=3")
         self.options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.2171.95 Safari/537.36")
-        self.browser = webdriver.Chrome(executable_path='C:\\Programmist\\AvtoBot\\data\\chromedriver.exe',options=self.options)
+        self.browser = webdriver.Chrome(executable_path='C:\\Work\\python\\HeadHunterBot-main\\data\\chromedriver.exe',options=self.options)
         time.sleep(0.3)
         customPrint.system_space()
-        #self.write_settings()
         self.get_span_data_qa()
+        self.write_settings()
         
       
     def get_span_data_qa(self):
@@ -49,8 +50,11 @@ class Parser(object):
         self.browser.find_element(By.CSS_SELECTOR,'#HH-React-Root > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content > div > div > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12.bloko-column_container > div > form > div:nth-child(5) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-5.bloko-column_l-8 > div > div.form-choose > button').click()
         time.sleep(2)
         spans = self.browser.find_elements(By.CLASS_NAME,'bloko-checkbox__text')
-        write_data_qa_industry(spans)
-
+        industry = ""
+        for i in spans:
+            if i.text == 'ЖКХ':
+                industry = i.get_attribute('data-qa')
+        self.industry = industry
   
     def write_settings(self):
         self.browser.get(url='https://hh.ru')
@@ -72,6 +76,12 @@ class Parser(object):
         self.browser.find_element(By.CSS_SELECTOR,"body > div.bloko-modal-overlay.bloko-modal-overlay_visible > div > div.bloko-modal > div.bloko-modal-header > div > input").send_keys(self.specialization)
         self.browser.find_element(By.XPATH,f"//span[text()='{self.specialization}']").click()
         self.browser.find_element(By.CSS_SELECTOR,"div.bloko-modal-footer > div > span:nth-child(2) > button").click()
+        time.sleep(2)
+        self.browser.find_element(By.CSS_SELECTOR,".HH-Employer-Industries-Select").click()
+        self.browser.find_element(By.CSS_SELECTOR,f"span[data-qa='{self.industry}']").click()
+        time.sleep(1)
+        self.browser.find_element(By.CSS_SELECTOR,'body > div.bloko-modal-container.bloko-modal-container_visible > div.bloko-modal > div.bloko-modal-footer > span:nth-child(2) > button > span.bloko-button__content').click()
+       
 
         self.browser.find_element(By.CSS_SELECTOR,'#HH-React-Root > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content > div > div > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12.bloko-column_container > div > form > div:nth-child(6) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-5.bloko-column_l-8 > div > div > div > div.region-select.region-select_list > div > input').send_keys(self.region)
         time.sleep(2)
@@ -79,21 +89,22 @@ class Parser(object):
         
         time.sleep(4)
         self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        exp_button = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.XPATH,f"//span[text()='{self.exp}']")))
-        exp_button.click()
+        if database.get_config(config='exp'):
+            exp_button = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.XPATH,f"//span[text()='{self.exp}']")))
+            exp_button.click()
         
-       
-        self.employment = self.employment.split(',')
-        for e in self.employment:
-            employment_button = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.XPATH,f"//span[text()='{e}']")))
-            employment_button.click()
-            self.browser.implicitly_wait(1)
-        
-        self.schedule = self.schedule.split(',')
-        for s in self.schedule:
-            self.browser.find_element(By.XPATH,f"//span[text()='{s}']").click()#Расписание работы
+        if database.get_config(config='employment'):
+            self.employment = self.employment.split(',')
+            for e in self.employment:
+                employment_button = WebDriverWait(self.browser, 10).until(EC.presence_of_element_located((By.XPATH,f"//span[text()='{e}']")))
+                employment_button.click()
+                self.browser.implicitly_wait(1)
+        if database.get_config(config='schedule'):
+            self.schedule = self.schedule.split(',')
+            for s in self.schedule:
+                self.browser.find_element(By.XPATH,f"//span[text()='{s}']").click()#Расписание работы
            
-       
+        self.browser.find_element(By.XPATH,"//span[text()='100 вакансий']").click()
         self.browser.find_element(By.CSS_SELECTOR,'#submit-bottom').click() 
     
     

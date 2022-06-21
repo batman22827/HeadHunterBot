@@ -15,6 +15,7 @@ cursor.execute("""create table if not exists config
         only_name_company bool,
         only_description bool, 
         specialization TEXT, 
+        industry TEXT,
         region TEXT, 
         earnings TEXT,
         exp TEXT,
