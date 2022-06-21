@@ -20,7 +20,8 @@ cursor.execute("""create table if not exists config
         earnings TEXT,
         exp TEXT,
         employment TEXT,
-        schedule TEXT
+        schedule TEXT,
+        resume TEXT
 
         )""")
 connection.commit()

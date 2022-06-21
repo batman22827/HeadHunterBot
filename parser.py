@@ -20,9 +20,12 @@ from config import get_text_vacancy
 
 class Parser(object):
     def __init__(self) -> None:
+        self.resume = database.get_config('resume')
+        self.text_vacancy = ""
         self.industry = database.get_config('industry')
         self.vacancy = database.get_config('vacancy')
-        self.text_vacancy = get_text_vacancy('бариста')
+        if self.resume !=None:
+            self.text_vacancy = get_text_vacancy(f'{self.resume}')
         self.specialization = database.get_config('specialization')
         self.region = database.get_config('region')
         self.earnings = database.get_config('earnings')
@@ -34,34 +37,16 @@ class Parser(object):
         self.options.add_argument('--no-sandbox')
         self.options.add_argument("--disable-notifications")
         self.options.add_argument('--disable-dev-shm-usage')
-        self.options.add_argument("user-data-dir=C:\\Users\\codeframer\\AppData\\Local\\Google\\Chrome\\User Data")
+        self.options.add_argument("user-data-dir=C:\\Users\\Ilya\\AppData\\Local\\Google\\Chrome\\User Data")
         self.options.add_argument("--log-level=3")
         self.options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.2171.95 Safari/537.36")
-        self.browser = webdriver.Chrome(executable_path='C:\\Work\\python\\HeadHunterBot-main\\data\\chromedriver.exe',options=self.options)
+        self.browser = webdriver.Chrome(executable_path='C:\Programmist\HeadHunter\\data\\chromedriver.exe',options=self.options)
         time.sleep(0.3)
         customPrint.system_space()
-        self.get_span_data_qa()
         self.write_settings()
         
       
-    def get_span_data_qa(self):
-        self.browser.get(url='https://hh.ru')
-        self.browser.find_element(By.CSS_SELECTOR,'.bloko-icon-dynamic').click()
-        self.browser.find_element(By.CSS_SELECTOR,'#HH-React-Root > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content > div > div > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12.bloko-column_container > div > form > div:nth-child(5) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-5.bloko-column_l-8 > div > div.form-choose > button').click()
-        time.sleep(2)
-        spans = self.browser.find_elements(By.CLASS_NAME,'bloko-checkbox__text')
-        industry = ""
-        for i in spans:
-            if i.text == 'ЖКХ':
-                industry = i.get_attribute('data-qa')
-        self.industry = industry
-  
-    def write_settings(self):
-        self.browser.get(url='https://hh.ru')
-       
-        self.browser.find_element(By.CSS_SELECTOR,'.bloko-icon-dynamic').click()
-       
-        self.browser.find_element(By.CSS_SELECTOR,'#advancedsearchmainfield').send_keys(self.vacancy)
+    def click_search_only(self):
         if database.get_config(config = 'only_name'):
             self.browser.find_element(By.XPATH,"//span[text()='в названии вакансии']").click()
 
@@ -70,17 +55,57 @@ class Parser(object):
 
         if database.get_config(config='only_description'):
             self.browser.find_element(By.XPATH,"//span[text()='в описании вакансии']").click()
+
+    def click_industry(self):
+        if database.get_config(config='industry'):   
+            self.browser.find_element(By.CSS_SELECTOR,'#HH-React-Root > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content > div > div > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12.bloko-column_container > div > form > div:nth-child(5) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-5.bloko-column_l-8 > div > div.form-choose > button').click()
+            self.browser.find_element(By.CSS_SELECTOR,'body > div.bloko-modal-container.bloko-modal-container_visible > div.bloko-modal > div.bloko-modal-header > div.bloko-tree-selector-popup-search > input').send_keys(f'{self.industry}')    
+            time.sleep(2)
+            spans = self.browser.find_elements(By.CSS_SELECTOR,"span[class='bloko-checkbox__text']")
+            time.sleep(2)
+            for i in spans:
+                if i.text == self.industry: 
+                    i.click()
+              
+            
+            # for i in range(1,400):
+            #     try:
+            #         self.browser.find_element(By.CSS_SELECTOR,f"span[data-qa='bloko-tree-selector-toogle-node bloko-tree-selector-toogle-node-{i}']").click()
+            #         customPrint.print_info(f"Обработал иконку под номером {i}")
+                
+                            
+            #         time.sleep(0.5) 
+            #     except:
+            #         pass     
+            # customPrint.print_info("Все иконки обработаны")     
+            # spans = self.browser.find_elements(By.CLASS_NAME,'bloko-checkbox__text')
+            # industry = ""
+            # for i in spans:
+            #     print(i.text)
+            #     if i.text == self.industry:
+            #         self.industry = i.get_attribute('data-qa')
+              
+            #self.browser.find_element(By.CSS_SELECTOR,f"span[data-qa='{self.industry}']").click()
+            #time.sleep(1)
+            #self.browser.find_element(By.CSS_SELECTOR,'body > div.bloko-modal-container.bloko-modal-container_visible > div.bloko-modal > div.bloko-modal-footer > span:nth-child(2) > button > span.bloko-button__content').click()
+            time.sleep(500)
+
+    def click_specialization(self):
+           
+  
+    def write_settings(self):
+        self.browser.get(url='https://hh.ru/search/vacancy/advanced')
+        self.browser.find_element(By.CSS_SELECTOR,'#advancedsearchmainfield').send_keys(self.vacancy)
+        self.write_search_only()
+       
        
         self.browser.find_element(By.CSS_SELECTOR,"button[data-qa='resumesearch__profroles-switcher']").click()
-       
         self.browser.find_element(By.CSS_SELECTOR,"body > div.bloko-modal-overlay.bloko-modal-overlay_visible > div > div.bloko-modal > div.bloko-modal-header > div > input").send_keys(self.specialization)
-        self.browser.find_element(By.XPATH,f"//span[text()='{self.specialization}']").click()
+        if database.get_config(config='specialization'):    
+            self.browser.find_element(By.XPATH,f"//span[text()='{self.specialization}']").click()
         self.browser.find_element(By.CSS_SELECTOR,"div.bloko-modal-footer > div > span:nth-child(2) > button").click()
         time.sleep(2)
-        self.browser.find_element(By.CSS_SELECTOR,".HH-Employer-Industries-Select").click()
-        self.browser.find_element(By.CSS_SELECTOR,f"span[data-qa='{self.industry}']").click()
-        time.sleep(1)
-        self.browser.find_element(By.CSS_SELECTOR,'body > div.bloko-modal-container.bloko-modal-container_visible > div.bloko-modal > div.bloko-modal-footer > span:nth-child(2) > button > span.bloko-button__content').click()
+        #self.write_industry()
        
 
         self.browser.find_element(By.CSS_SELECTOR,'#HH-React-Root > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content > div > div > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-8.bloko-column_l-12.bloko-column_container > div > form > div:nth-child(6) > div > div.bloko-column.bloko-column_xs-4.bloko-column_s-8.bloko-column_m-5.bloko-column_l-8 > div > div > div > div.region-select.region-select_list > div > input').send_keys(self.region)
