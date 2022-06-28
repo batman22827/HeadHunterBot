@@ -1,13 +1,13 @@
+from re import I
 import time
+from urllib import response
 import database
-from lib2to3.pgen2 import driver
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from castomPrint import customPrint
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support import expected_conditions as EC
 from config import get_text_vacancy
 
 
@@ -31,25 +31,23 @@ class Parser(object):
         self.employment = database.get_config('employment')
         self.options = webdriver.ChromeOptions()
 
-        self.options.add_argument('--allow-profiles-outside-user-dir')
-        self.options.add_argument('--enable-profile-shortcut-manager')
-        self.options.add_argument('--profile-directory=profile 1')
+
         self.options.add_argument('--no-sandbox')
         self.options.add_argument("--disable-notifications")
-        self.options.add_argument('--remote-debugging-port=9222')
         self.options.add_argument('--disable-dev-shm-usage')
-        self.options.add_argument('user-data-dir=C:\\Work\\python\\HeadHunterBot\\User')
+        self.options.add_argument('user-data-dir=C:/Users/Ilya/AppData/Local/Google/Chrome/User Data')
         self.options.add_argument("--log-level=3")
-        self.options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/537.36")
+        self.options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.4896.127 Safari/537.36")
         #self.options.add_argument('--headless')
         
-        self.browser = webdriver.Chrome(executable_path='C:\\Work\\python\\HeadHunterBot\\data\\chromedriver.exe',options=self.options)
+        self.browser = webdriver.Chrome(executable_path='C:\\Programmist\\HeadHunter\\data\\chromedriver.exe',options=self.options)
         time.sleep(0.3)
         customPrint.system_space()
-        self.write_settings()
+        self.check_response()
         
  
     def write_settings(self):
+        self.browser.maximize_window()
         self.browser.get(url='https://hh.ru/search/vacancy/advanced')
         self.browser.implicitly_wait(10)
         self.browser.find_element(By.CSS_SELECTOR,'#advancedsearchmainfield').send_keys(self.vacancy)
@@ -159,7 +157,7 @@ class Parser(object):
     def click_vacancy(self):
         customPrint.print_info(text='Начинаю поиск кнопок откликнуться')
         self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        vacancy= self.browser.find_elements_by_link_text("Откликнуться")
+        vacancy= self.browser.find_elements(By.LINK_TEXT,"Откликнуться")
        
         customPrint.print_info(text='Все кнопки найдены')
         time.sleep(3)
@@ -182,6 +180,7 @@ class Parser(object):
                 self.browser.find_element(By.CSS_SELECTOR,'#RESPONSE_MODAL_FORM_ID > div > div.bloko-form-row > textarea').clear()
                 self.browser.find_element(By.CSS_SELECTOR,'#RESPONSE_MODAL_FORM_ID > div > div.bloko-form-row > textarea').send_keys(f'{self.text_vacancy}')
                 time.sleep(4)
+                database.write_url(self.browser.current_url,False)
                 self.browser.close()
                 self.browser.switch_to.window(self.browser.window_handles[-1])
         customPrint.print_info("По всем найденным вакансия отклики отправлены!Завершаю работу")         
@@ -193,3 +192,23 @@ class Parser(object):
             return False
         return True
    
+    def check_response(self):
+        self.browser.maximize_window()
+        self.browser.get(url='https://hh.ru/search/vacancy/advanced')
+        self.browser.implicitly_wait(10)
+        for i in database.get_all_urls():
+            time.sleep(1)
+            self.browser.execute_script(f"$(window.open('{i[0]}'))")
+            self.browser.switch_to.window(self.browser.window_handles[-1])
+            time.sleep(2)
+            self.browser.find_element(By.CSS_SELECTOR,"#RESPONSE_MODAL_FORM_ID > div > div.vacancy-response > a").click()
+            try:
+                text_response = self.browser.find_element(By.CSS_SELECTOR,"div[class='bloko-text bloko-text_small'").text
+                if text_response == 'Отказ' or text_response == 'Резюме просмотрено' or text_response == 'Приглашение':
+                    try:
+                        self.browser.find_element(By.CSS_SELECTOR,"#HH-React-Root > div > div.HH-MainContent.HH-Supernova-MainContent > div.main-content > div > div > div.g-col1.m-colspan3 > div > div.negotiations > div.negotiations-body > div:nth-child(2) > div.negotiations-message-body > form > div.negotiations-new-message.HH-Form-Element-TooltipElement > textarea").send_keys("123")
+                    except:
+                        print("Закрыты сообщения")
+            except:
+                print("Вакансия еще не просмотрена")            
+        time.sleep(5455)    

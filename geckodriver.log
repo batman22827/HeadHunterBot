@@ -1,0 +1,71 @@
+1656272535703	geckodriver	INFO	Listening on 127.0.0.1:54776
+1656272538780	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-notifications" "--disable-dev-shm-usage" "user-data-dir=C:\\Programmist\\HeadHunter\\User" "--log-level=3" "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.4896.127 Safari/537.36" "--headless" "--remote-debugging-port" "54777" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofile66rv4W"
+*** You are running in headless mode.
+1656272539936	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54777
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofile66rv4W\\search.json.mozlz4", (void 0)))
+1656272541766	Marionette	INFO	Listening on port 54796
+DevTools listening on ws://localhost:54777/devtools/browser/ca488bfb-624f-475d-8f67-332eeeb4ad7e
+Read port: 54796
+1656272541826	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://mc.yandex.ru/metrika/watch.js, line 14: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656272545060	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656272610336	geckodriver	INFO	Listening on 127.0.0.1:54904
+1656272613427	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-notifications" "--disable-dev-shm-usage" "user-data-dir=C:\\Programmist\\HeadHunter\\User" "--log-level=3" "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.4896.127 Safari/537.36" "--remote-debugging-port" "54905" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofilejfQ7Ry"
+1656272613895	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:54905
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofilejfQ7Ry\\search.json.mozlz4", (void 0)))
+1656272616850	Marionette	INFO	Listening on port 54927
+DevTools listening on ws://localhost:54905/devtools/browser/c381a2d4-b104-4920-bb00-77e3df26c2a7
+Read port: 54927
+1656272616966	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://mc.yandex.ru/metrika/watch.js, line 14: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://mc.yandex.ru/metrika/watch.js, line 14: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656272634971	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1656272635857	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.js:235:19
+TimedPromise@chrome://remote/content/marionette/sync.js:220:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
+1656272636574	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.js:235:19
+TimedPromise@chrome://remote/content/marionette/sync.js:220:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.js:431:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.js:179:31
+1656272644886	geckodriver	INFO	Listening on 127.0.0.1:55075
+1656272647970	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-notifications" "--disable-dev-shm-usage" "user-data-dir=C:\\Programmist\\HeadHunter\\User" "--log-level=3" "--remote-debugging-port" "55076" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofilej105F4"
+1656272648479	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:55076
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofilej105F4\\search.json.mozlz4", (void 0)))
+1656272651248	Marionette	INFO	Listening on port 55097
+DevTools listening on ws://localhost:55076/devtools/browser/0bd3041f-f043-4515-8ab1-1b6b7dfeaba4
+Read port: 55097
+1656272651296	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://mc.yandex.ru/metrika/watch.js, line 14: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656272654412	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656272829007	geckodriver	INFO	Listening on 127.0.0.1:55258
+1656272832067	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--no-sandbox" "--disable-notifications" "--disable-dev-shm-usage" "user-data-dir=C:\\Programmist\\HeadHunter\\User" "--log-level=3" "--remote-debugging-port" "55259" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofilebYgfoY"
+1656272832546	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:55259
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Ilya\\AppData\\Local\\Temp\\rust_mozprofilebYgfoY\\search.json.mozlz4", (void 0)))
+1656272835291	Marionette	INFO	Listening on port 55281
+DevTools listening on ws://localhost:55259/devtools/browser/f51c0374-49bd-401b-84aa-b66dff03d8f3
+Read port: 55281
+1656272835396	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://mc.yandex.ru/metrika/watch.js, line 14: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+1656272838741	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+JavaScript warning: https://i.hh.ru/webpackBuild/hhgfhp.d814e0987f7e286287b3.js, line 1: WEBGL_debug_renderer_info is deprecated in Firefox and will be removed. Please use RENDERER.
+[Child 1592, MediaDecoderStateMachine #1] WARNING: Decoder=2507c388100 state=DECODING_METADATA Decode metadata failed, shutting down decoder: file /builds/worker/checkouts/gecko/dom/media/MediaDecoderStateMachine.cpp:370
+[Child 1592, MediaDecoderStateMachine #1] WARNING: Decoder=2507c388100 Decode error: NS_ERROR_DOM_MEDIA_METADATA_ERR (0x806e0006): file /builds/worker/checkouts/gecko/dom/media/MediaDecoderStateMachine.cpp:3587

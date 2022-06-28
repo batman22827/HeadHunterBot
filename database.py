@@ -24,6 +24,12 @@ cursor.execute("""create table if not exists config
         resume TEXT
 
         )""")
+
+cursor.execute("""create table if not exists vacancy_urls
+       (url TEXT,
+       checked bool
+
+        )""")        
 connection.commit()
 
 
@@ -34,7 +40,8 @@ def get_config(config):
                 return None
         return cursor.execute(f"select {config} from config").fetchone()[0] 
 
-
+def get_all_urls():
+        return cursor.execute("select url from vacancy_urls where checked=?",[False]).fetchall()
 
 def write_config(row,value):
         res = cursor.execute(f"select {row} from config").fetchone()
@@ -44,3 +51,11 @@ def write_config(row,value):
                 cursor.execute(f"update config set {row} = ?", [value]) 
         connection.commit()    
 
+
+def write_url(url,check):
+        res = cursor.execute(f"select url from vacancy_urls where url=?",[url]).fetchone()
+        if res is None:
+                cursor.execute(f"INSERT OR IGNORE INTO vacancy_urls (url,checked) VALUES (?,?)", (url,check))
+        else:
+                cursor.execute(f"update vacancy_urls set checked = ?", [check]) 
+        connection.commit()    
